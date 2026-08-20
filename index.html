@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guardião do Parque - Gerador de diploma personalizado com webcam">
+  <title>Guardião do Parque | Pé Pedal</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <div class="badge">🌿 PROJETO PÉ PEDAL</div>
+      <h1>Guardião do Parque</h1>
+      <p>Gere seu diploma personalizado com uma foto sua!</p>
+    </header>
+
+    <section id="formArea" class="body-area">
+      <div class="progress">
+        <span class="step active">1</span><i></i><span class="step">2</span><i></i><span class="step">3</span>
+      </div>
+
+      <div class="form-group">
+        <label for="nameInput">Seu nome</label>
+        <input type="text" id="nameInput" maxlength="30" autocomplete="name"
+               placeholder="Digite seu nome..." aria-describedby="nameHint">
+        <small id="nameHint">Digite pelo menos 3 caracteres.</small>
+      </div>
+
+      <div class="camera-card">
+        <div class="camera-title">
+          <span>📷 Sua foto</span>
+          <span id="cameraStatus" class="status">Inicializando...</span>
+        </div>
+
+        <video id="video" autoplay playsinline muted></video>
+        <canvas id="canvas" class="hidden-capture"></canvas>
+
+        <div id="photoPreviewWrap" class="photo-preview-wrap hidden">
+          <img id="photoPreview" alt="Prévia da foto capturada">
+        </div>
+
+        <div id="cameraMessage" class="camera-message">
+          Permita o acesso à câmera quando o navegador solicitar.
+        </div>
+
+        <div class="button-row">
+          <button id="btnCapture" class="btn btn-secondary" disabled>📸 Tirar Foto</button>
+          <label class="btn btn-outline file-button">
+            🖼️ Usar Foto do Computador
+            <input id="photoInput" type="file" accept="image/*" hidden>
+          </label>
+          <button id="btnRetake" class="btn btn-outline hidden">↻ Nova Foto</button>
+        </div>
+      </div>
+
+      <div class="template-group">
+        <label for="templateSelect">Modelo do diploma</label>
+        <select id="templateSelect">
+          <option value="guardiao">🌿 Guardião do Parque</option>
+          <option value="natureza">🌎 Amigo da Natureza</option>
+        </select>
+      </div>
+
+      <button id="btnGenerate" class="btn btn-primary btn-large" disabled>🏆 Gerar Meu Diploma</button>
+      <p class="privacy">🔒 A foto fica apenas no seu navegador e não é enviada para nenhum servidor.</p>
+    </section>
+
+    <section id="diplomaArea" class="body-area hidden">
+      <div class="success-title">
+        <span>🎉</span>
+        <div>
+          <h2>Diploma pronto!</h2>
+          <p>Você agora faz parte da proteção do nosso parque.</p>
+        </div>
+      </div>
+
+      <div class="canvas-wrap">
+        <canvas id="diplomaCanvas" width="800" height="600"></canvas>
+      </div>
+
+      <div class="button-grid">
+        <button id="btnDownload" class="btn btn-download">⬇️ Salvar Diploma</button>
+        <button id="btnShare" class="btn btn-secondary">📲 Compartilhar</button>
+        <button id="btnPrint" class="btn btn-outline">🖨️ Imprimir</button>
+        <button id="btnAnother" class="btn btn-outline">✨ Fazer Outro</button>
+      </div>
+    </section>
+
+    <footer>Colégio Bentinho · Curso de Informática · Agosto/2026</footer>
+  </main>
+
+  <div id="toast" class="toast" role="status"></div>
+
+  <script src="assets/js/camera.js"></script>
+  <script src="assets/js/diploma.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
